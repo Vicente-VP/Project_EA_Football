@@ -6,7 +6,7 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-const teamsRouter = require('./routes/teams_routes');
+const teamsRouter = require('./routes/team_routes');
 app.use('/teams', teamsRouter);
 
 mongoose.connect(process.env.MONGODB_URI, {
