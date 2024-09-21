@@ -2,8 +2,15 @@ const express = require('express');
 const router = express.Router();
 const Teams = require('../models/teams');
 
+
+router.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 // Rota para obter todos os team
-router.get('/', async (req, res) => {
+router.get('/', async (req, res, next) => {
   try {
     const team = await Teams.find();
     res.json(team);
@@ -13,12 +20,12 @@ router.get('/', async (req, res) => {
 });
 
 // Rota para obter um teams por ID
-router.get('/:id', getTeams, (req, res) => {
+router.get('/:id', getTeams, (req, res, next) => {
   res.json(res.teams);
 });
 
 // Rota para criar um novo teams
-router.post('/', async (req, res) => {
+router.post('/', async (req, res, next) => {
   const teams = new Teams({
     nome_team: req.body.nome_team,
     coach: req.body.coach,
@@ -37,7 +44,7 @@ router.post('/', async (req, res) => {
 });
 
 // Rota para atualizar um teams por ID
-router.put('/:id', getTeams, async (req, res) => {
+router.put('/:id', getTeams, async (req, res, next) => {
   if (req.body.nome_team != null) {
     res.teams.nome_team = req.body.nome_team;
   }
@@ -66,7 +73,7 @@ router.put('/:id', getTeams, async (req, res) => {
 });
 
 // Rota para excluir um teams por ID
-router.delete('/:id', getTeams, async (req, res) => {
+router.delete('/:id', getTeams, async (req, res, next) => {
   try {
     await res.teams.deleteOne();
     res.json({ message: 'Time excluído com sucesso!' });
