@@ -11,7 +11,11 @@ const cors = require('cors')
 //   next();
 // });
 
-router.use(cors());
+router.use(cors({
+  allowedOrigins: [
+      '*'
+  ]
+}));
 
 // Rota para obter todos os team
 router.get('/', async (req, res, next) => {
