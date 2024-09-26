@@ -9,7 +9,7 @@ const Teams = require('../models/teams');
 //   next();
 // });
 
-app.use(cors());
+router.use(cors());
 
 // Rota para obter todos os team
 router.get('/', async (req, res, next) => {
