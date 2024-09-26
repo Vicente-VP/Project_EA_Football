@@ -1,21 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const Teams = require('../models/teams');
-const cors = require('cors')
 
 
 
-// router.use(function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// });
 
-router.options('*',cors({
-  allowedOrigins: [
-      '*'
-  ]
-}));
+ router.use(function(req, res, next) {
+   res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+   res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
+   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+   next();
+ });
+
+
 
 // Rota para obter todos os team
 router.get('/', async (req, res, next) => {
@@ -82,7 +79,7 @@ router.put('/:id', getTeams, async (req, res, next) => {
 
  
 // Rota para excluir um teams por ID
-router.delete('/:id', cors(), getTeams, async (req, res, next) => {
+router.delete('/:id', getTeams, async (req, res, next) => {
   try {
     await res.teams.deleteOne();
     res.json({ message: 'Time excluído com sucesso!' });
