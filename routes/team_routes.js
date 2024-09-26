@@ -11,7 +11,7 @@ const cors = require('cors')
 //   next();
 // });
 
-router.use(cors({
+router.options('*',cors({
   allowedOrigins: [
       '*'
   ]
@@ -80,7 +80,7 @@ router.put('/:id', getTeams, async (req, res, next) => {
   }
 });
 
-router.options('/:id', cors()) 
+ 
 // Rota para excluir um teams por ID
 router.delete('/:id', cors(), getTeams, async (req, res, next) => {
   try {
