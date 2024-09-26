@@ -1,3 +1,5 @@
+import cors from 'cors';
+
 const express = require('express');
 const router = express.Router();
 const Teams = require('../models/teams');
