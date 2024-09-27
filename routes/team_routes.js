@@ -4,19 +4,14 @@ const Teams = require('../models/teams');
 
 
 
-
-<<<<<<< HEAD
-=======
- router.use(function(req, res, next) {
-   res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-   res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
-   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-   next();
- });
+//  router.use(function(req, res, next) {
+//    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+//    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
+//    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//    next();
+//  });
 
 
-
->>>>>>> 92487fa0bddb865ba39a4603cf1c19faa9ec7711
 // Rota para obter todos os team
 router.get('/', async (req, res, next) => {
   try {
