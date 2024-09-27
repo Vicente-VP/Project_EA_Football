@@ -77,7 +77,7 @@ router.put('/:id', getTeams, async (req, res, next) => {
 
  
 // Rota para excluir um teams por ID
-router.delete('/:_id', getTeams, async (req, res) => {
+router.delete('/:id', getTeams, async (req, res) => {
   try {
     await res.teams.deleteOne();
     res.json({ message: 'Time excluído com sucesso!' });
