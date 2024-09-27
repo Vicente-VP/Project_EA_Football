@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const Teams = require('../models/teams');
-const cors = require('cors')
 
 
 
@@ -10,8 +9,6 @@ const cors = require('cors')
 //   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 //   next();
 // });
-
-router.use(cors());
 
 // Rota para obter todos os team
 router.get('/', async (req, res, next) => {
